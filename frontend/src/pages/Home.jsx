@@ -4,12 +4,14 @@ import { useSelector } from "react-redux";
 
 function Home() {
   const { user } = useSelector((state) => state.auth);
-  const { name } = user;
-  
+  if (user) {
+    var { name } = user;
+  }
+
   return (
     <>
       <section className="heading">
-        <h1>Welcome {name.toUpperCase()}</h1>
+        {user && <h1>Welcome {name.toUpperCase()}</h1>}
         <h1>What do you need help with?</h1>
         <p>Please choose from an option below</p>
       </section>
